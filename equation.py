@@ -38,7 +38,7 @@ G = Ds * q / np.sqrt(2 * p * L * h * omega)
 # form factor
 F = np.exp(-(q ** 2 * sigma)/4)
 
-# exciton coupling matrix elements (default values)
+# exciton coupling matrix elements
 g = G * F
 
 # linear dispersion (default values)
@@ -50,10 +50,10 @@ gamma = g/w
 # phonon occupation number
 n = (np.exp((h * w)/(k * T)) - 1) ** -1
 
-# time_dependent left_hand equation
+# time_dependent right side equation
 time_dependent = np.exp(((np.absolute(gamma)) ** 2) * (- n * np.absolute(np.exp(- omega * T) - 1)) ** 2)
 
-# time_independent left_hand equation
+# time_independent right side equation
 time_independent = np.exp(((np.absolute(gamma)) ** 2) * np.exp(- omega * T) - 1)
 
 # phonon shifted transition frequency
@@ -64,3 +64,4 @@ X = - np.exp(- omega_constant * T) * time_independent * time_independent
 
 # Here a sample on how to read a file
 # sample_data = pd.read_csv('sample_data.csv')
+
