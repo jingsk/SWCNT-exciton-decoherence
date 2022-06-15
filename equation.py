@@ -1,4 +1,5 @@
 import numpy as np
+import math
 import matplotlib.pyplot as plt
 
 
@@ -19,7 +20,7 @@ Ds = 1.9228 * 10 ** -18
 # length of nanotube (m)
 L = 10 ** -10
 # confinement length (m)
-sigma = .5
+sigma = 3.3 * 10 ** -10
 # omega from the bare energy of the Quantum Dots state
 omega_constant = 2
 
@@ -27,7 +28,7 @@ omega_constant = 2
 " FUNCTIONS "
 
 # wave vector
-q = np.linspace(0.1, 0.5, num=10)
+q = np.linspace(0.1, 0.5, num=100)
 
 # linear dispersion
 omega = v * q
@@ -51,17 +52,18 @@ gamma = g/w
 n = (np.exp((h * w)/(k * T)) - 1) ** -1
 
 # time_dependent right side equation
-time_dependent = np.exp(((np.absolute(gamma)) ** 2) * (- n * np.absolute(np.exp(- omega * T) - 1)) ** 2)
+time_dependent = 1j * np.exp(((np.absolute(gamma)) ** 2) * (- n * np.absolute(np.exp(- 1j * omega * T) - 1)) ** 2)
 
 # time_independent right side equation
-time_independent = np.exp(((np.absolute(gamma)) ** 2) * np.exp(- omega * T) - 1)
+time_independent = 1j * np.exp(((np.absolute(gamma)) ** 2) * np.exp(- 1j * omega * T) - 1)
 
 # phonon shifted transition frequency
-big_omega = omega_constant
+big_omega = omega_constant - np.absolute(gamma) ** 2 * omega
 
 # linear susceptibility
-X = - np.exp(- omega_constant * T) * time_independent * time_independent
+X = - np.exp(- big_omega * T) * time_independent * time_independent
 
+print(time_dependent)
 # Here a sample on how to read a file
 # sample_data = pd.read_csv('sample_data.csv')
 
