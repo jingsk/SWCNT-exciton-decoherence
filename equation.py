@@ -20,7 +20,7 @@ v = 19.9
 # deformation potential (J)
 Ds = 1.9228e-18
 # length of nanotube (m)
-L = 40e-15
+L = 40e-10
 # confinement length (m)
 sigma = 13.5e-10
 # energy of the excited state (Hz)
@@ -33,8 +33,7 @@ omega_constant = 1.27 * 1.60218e-19 / h_bar
 " FUNCTIONS "
 
 # wave vector
-# q is a inverse distance (1/m)** Angstrom inverse, .1, .2 Angstrom
-# print in a file
+# print file
 q = np.linspace(0.1, 0.5, num=100) * 1/L
 
 # time (s)
@@ -60,18 +59,14 @@ gamma = g / w
 # phonon occupation number
 n = (np.exp((h_bar * w)/(k_b * T)) - 1) ** -1
 
-# time_dependent right side equation
-time_dependent = 1j * np.exp(((np.absolute(gamma)) ** 2) * (- n * np.absolute(np.exp(- 1j * omega_s * t) - 1)) ** 2)
+# temperature_dependent right side equation
+temperature_dependent = 1j * np.exp(((np.absolute(gamma)) ** 2) * (- n * np.absolute(np.exp(- 1j * omega_s * t) - 1)) ** 2)
 
-# time_independent right side equation
-time_independent = 1j * np.exp(((np.absolute(gamma)) ** 2) * np.exp(- 1j * omega_s * t) - 1)
+# temperature_independent right side equation
+temperature_independent = 1j * np.exp(((np.absolute(gamma)) ** 2) * np.exp(- 1j * omega_s * t) - 1)
 
 # phonon shifted transition frequency
 big_omega = omega_constant * h_bar - np.absolute(gamma) ** 2 * omega_s
 
 # linear susceptibility
-X = - 1j * np.exp(- 1j * big_omega * t) * time_independent * time_independent
-
-print(q)
-print(gamma)
-print(time_dependent)
+#X = - 1j * np.exp(- 1j * big_omega * t) * temperature_independent * temperature_independent
