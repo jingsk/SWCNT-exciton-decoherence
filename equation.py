@@ -1,7 +1,9 @@
 import numpy as np
-import math
+import warnings
 import matplotlib.pyplot as plt
 
+
+warnings.filterwarnings('ignore')
 
 " CONSTANTS "
 
@@ -15,8 +17,8 @@ h_bar = 1.054571817e-34
 T = 4
 # rho (kg/m)
 p = 1.67e-15
-# vs (km/s)
-v = 19.9
+# vs (m/s)
+v = 19900
 # deformation potential (J)
 Ds = 1.9228e-18
 # length of nanotube (m)
@@ -33,7 +35,6 @@ omega_constant = 1.27 * 1.60218e-19 / h_bar
 " FUNCTIONS "
 
 # wave vector
-# print file
 q = np.linspace(0.1, 0.5, num=100) * 1/L
 
 # time (s)
@@ -60,13 +61,31 @@ gamma = g / w
 n = (np.exp((h_bar * w)/(k_b * T)) - 1) ** -1
 
 # temperature_dependent right side equation
-temperature_dependent = 1j * np.exp(((np.absolute(gamma)) ** 2) * (- n * np.absolute(np.exp(- 1j * omega_s * t) - 1)) ** 2)
+temperature_dependent = 1j * np.exp((np.absolute(gamma) ** 2) * (- n * np.absolute(np.exp(- 1j * omega_s * t) - 1)) ** 2)
+# extract real part
+x1 = [ele.real for ele in temperature_dependent]
+# extract imaginary part
+y1 = [ele.imag for ele in temperature_dependent]
+
+plt.scatter(t, y1)
+plt.ylabel('X(t) - Temperature Dependent')
+plt.xlabel('Time(s)')
+plt.show()
 
 # temperature_independent right side equation
 temperature_independent = 1j * np.exp(((np.absolute(gamma)) ** 2) * np.exp(- 1j * omega_s * t) - 1)
+# extract real part
+x2 = [ele.real for ele in temperature_independent]
+# extract imaginary part
+y2 = [ele.imag for ele in temperature_independent]
+
+plt.scatter(t, y2)
+plt.ylabel('X(t) - Temperature Independent')
+plt.xlabel('Time(s)')
+plt.show()
 
 # phonon shifted transition frequency
-big_omega = omega_constant * h_bar - np.absolute(gamma) ** 2 * omega_s
+# big_omega = omega_constant * h_bar - np.absolute(gamma) ** 2 * omega_s
 
 # linear susceptibility
-#X = - 1j * np.exp(- 1j * big_omega * t) * temperature_independent * temperature_independent
+# X = - 1j * np.exp(- 1j * big_omega * t) * time_independent * time_independent
