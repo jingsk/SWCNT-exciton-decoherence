@@ -27,7 +27,7 @@ L = 40e-10
 sigma = 13.5e-10
 # energy of the excited state (Hz)
 omega_constant = 1.27 * 1.60218e-19 / h_bar
-# Unknown constant from directly proportional relation (still working)
+# Unknown constant from directly proportional relation
 C = 1
 
 # Chi - linear susceptibility, polarizability units are (C * m^2 / V*2)
@@ -37,7 +37,7 @@ C = 1
 " FUNCTIONS "
 
 # wave vector
-q = np.linspace(0.1, 0.5, num=100) * 1/L
+q = np.linspace(0.001, 0.01, num=100) * 1/L
 
 # time (s)
 t = np.linspace(0, 3, num=100) * 1e-12
@@ -63,34 +63,28 @@ gamma = g / w
 n = (np.exp((h_bar * w)/(k_b * T)) - 1) ** -1
 
 # temperature_dependent right side equation
-temperature_dependent = 1j * np.exp((np.absolute(gamma) ** 2) * (- n * np.absolute(np.exp(- 1j * omega_s * t) - 1)) ** 2)
-# extract imaginary part
-temperature_dependent_imaginary = [ele.imag for ele in temperature_dependent]
+temperature_dependent = 1j * np.exp(np.absolute(gamma) ** 2 @ (- n * (np.absolute(np.exp(- 1j * np.outer(omega_s, t)) - 1)) ** 2))
 
-plt.scatter(t, temperature_dependent_imaginary)
+plt.scatter(t, temperature_dependent.imag)
 plt.ylabel('X(t) - Temperature Dependent')
 plt.xlabel('Time(s)')
 plt.show()
 
 # temperature_independent right side equation
-temperature_independent = 1j * np.exp(((np.absolute(gamma)) ** 2) * np.exp(- 1j * omega_s * t) - 1)
-# extract imaginary part
-temperature_independent_imaginary = [ele.imag for ele in temperature_independent]
+temperature_independent = 1j * np.exp(np.absolute(gamma) ** 2 @ (np.exp(- 1j * np.outer(omega_s, t) - 1)))
 
-plt.scatter(t, temperature_independent_imaginary)
+plt.scatter(t, temperature_independent.imag)
 plt.ylabel('X(t) - Temperature Independent')
 plt.xlabel('Time(s)')
 plt.show()
 
 # phonon shifted transition frequency
-big_omega = omega_constant * h_bar - np.absolute(gamma) ** 2 * omega_s
+big_omega = omega_constant * h_bar - np.absolute(gamma) ** 2 @ omega_s
 
 # linear susceptibility
 linear_susceptibility = - 1j * np.exp(- 1j * big_omega * t) * C * temperature_independent * temperature_independent
-# extract imaginary part
-linear_susceptibility_imaginary = [ele.imag for ele in linear_susceptibility]
 
-plt.scatter(t, linear_susceptibility_imaginary)
+plt.scatter(t, linear_susceptibility.imag)
 plt.ylabel('X(t)')
 plt.xlabel('Time(s)')
 plt.show()
