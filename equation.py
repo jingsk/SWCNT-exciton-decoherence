@@ -33,10 +33,10 @@ C = 1
 " FUNCTIONS "
 
 # wave vector
-q = np.linspace(0.001, 0.01, num=100) * 1/L
+q = np.linspace(0.001, 0.01, num=500) * 1/L
 
 # time (s)
-t = np.linspace(0, 3, num=100) * 1e-12
+t = np.linspace(0, 3, num=500) * 1e-12
 # linear dispersion
 omega_s = v * q
 
@@ -57,6 +57,7 @@ gamma = g / w
 
 # phonon occupation number
 n = (np.exp((h_bar * w)/(k_b * T)) - 1) ** -1
+
 
 # temperature_dependent
 temperature_dependent = 1j * np.exp(np.absolute(gamma) ** 2 * - n
