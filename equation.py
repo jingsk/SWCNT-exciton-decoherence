@@ -37,6 +37,7 @@ q = np.linspace(0.001, 0.01, num=500) * 1/L
 
 # time (s)
 t = np.linspace(0, 3, num=500) * 1e-12
+
 # linear dispersion
 omega_s = v * q
 
@@ -58,6 +59,8 @@ gamma = g / w
 # phonon occupation number
 n = (np.exp((h_bar * w)/(k_b * T)) - 1) ** -1
 
+# phonon shifted transition frequency
+big_omega = omega_constant * h_bar - np.absolute(gamma) ** 2 @ omega_s
 
 # temperature_dependent
 temperature_dependent = 1j * np.exp(np.absolute(gamma) ** 2 * - n
@@ -78,9 +81,6 @@ plt.title('X(t) - Temperature Independent vs Time(s)')
 plt.ylabel('X(t) - Temperature Independent')
 plt.xlabel('Time(s)')
 plt.show()
-
-# phonon shifted transition frequency
-big_omega = omega_constant * h_bar - np.absolute(gamma) ** 2 @ omega_s
 
 # linear susceptibility
 linear_susceptibility = - 1j * np.exp(- 1j * big_omega * t) * C * temperature_independent * temperature_independent
