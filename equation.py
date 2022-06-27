@@ -15,7 +15,7 @@ k_b = 1.380649e-23
 # h bar (J-s)
 h_bar = 1.054571817e-34
 # temperature (K)
-T = 1
+T = 4
 # rho (kg/m)
 p = 1.67e-15
 # vs (m/s)
@@ -27,7 +27,7 @@ L = 40e-10
 # confinement length (m)
 sigma = 13.5e-10
 # energy of the excited state (Hz)
-omega_constant = 1.27 * 1.60218e-19 / h_bar
+omega_constant = 0.2 * 1.60218e-19 / h_bar
 # Unknown constant from directly proportional relation
 C = 1
 
@@ -67,6 +67,7 @@ temperature_dependent = 1j * np.exp(np.absolute(gamma) ** 2 * - n
                                     @ (np.absolute(np.exp(- 1j * np.outer(omega_s, t)) - 1)) ** 2)
 
 plt.scatter(t, temperature_dependent.imag)
+plt.yscale('log')
 plt.title('X(t) - Temperature Dependent vs Time(s)')
 plt.ylabel('X(t) - Temperature Dependent')
 plt.xlabel('Time(s)')
@@ -77,6 +78,7 @@ temperature_independent = 1j * np.exp(np.absolute(gamma) ** 2
                                       @ (np.exp(- 1j * np.outer(omega_s, t)) - 1))
 
 plt.scatter(t, temperature_independent.imag)
+plt.yscale('log')
 plt.title('X(t) - Temperature Independent vs Time(s)')
 plt.ylabel('X(t) - Temperature Independent')
 plt.xlabel('Time(s)')
@@ -87,11 +89,10 @@ big_omega = omega_constant * h_bar - np.absolute(gamma) ** 2 @ omega_s
 
 # linear susceptibility
 linear_susceptibility = C * - 1j * np.exp(- 1j * big_omega * t) \
-                        * temperature_independent * temperature_independent
+                        * temperature_independent * temperature_dependent
 
 plt.scatter(t, linear_susceptibility.imag)
 # limits according to the research paper
-plt.ylim(0.01, 1)
 plt.xlim(0, 2e-12)
 # logarithmic scale according to research paper
 plt.yscale('log')
@@ -99,3 +100,4 @@ plt.title('Linear Susceptibility vs Time(s) ')
 plt.ylabel('X(t)')
 plt.xlabel('Time(s)')
 plt.show()
+
