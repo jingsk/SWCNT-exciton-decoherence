@@ -15,7 +15,7 @@ k_b = 1.380649e-23
 # h bar (J-s)
 h_bar = 1.054571817e-34
 # temperature (K)
-T = 4
+T = 1
 # rho (kg/m)
 p = 1.67e-15
 # vs (m/s)
@@ -36,10 +36,10 @@ C = 1
 
 
 # wave vector
-q = np.linspace(0.001, 0.01, num=1000) * 1/L
+q = np.linspace(0.001, 0.01, num=1500) * 1/L
 
 # time (s)
-t = np.linspace(0, 3, num=1000) * 1e-12
+t = np.linspace(0, 3, num=1500) * 1e-12
 # linear dispersion
 omega_s = v * q
 
@@ -67,9 +67,10 @@ temperature_dependent = 1j * np.exp(np.absolute(gamma) ** 2 * - n
                                     @ (np.absolute(np.exp(- 1j * np.outer(omega_s, t)) - 1)) ** 2)
 
 plt.scatter(t, temperature_dependent.imag)
+plt.xlim(0, 2e-12)
 plt.yscale('log')
-plt.title('X(t) - Temperature Dependent vs Time(s)')
-plt.ylabel('X(t) - Temperature Dependent')
+plt.title('X_t vs Time(s)')
+plt.ylabel('X_t')
 plt.xlabel('Time(s)')
 plt.show()
 
@@ -78,9 +79,10 @@ temperature_independent = 1j * np.exp(np.absolute(gamma) ** 2
                                       @ (np.exp(- 1j * np.outer(omega_s, t)) - 1))
 
 plt.scatter(t, temperature_independent.imag)
+plt.xlim(0, 2e-12)
 plt.yscale('log')
-plt.title('X(t) - Temperature Independent vs Time(s)')
-plt.ylabel('X(t) - Temperature Independent')
+plt.title('X_o vs Time (s)')
+plt.ylabel('X_o')
 plt.xlabel('Time(s)')
 plt.show()
 
@@ -96,8 +98,53 @@ plt.scatter(t, linear_susceptibility.imag)
 plt.xlim(0, 2e-12)
 # logarithmic scale according to research paper
 plt.yscale('log')
-plt.title('Linear Susceptibility vs Time(s) ')
-plt.ylabel('X(t)')
+plt.title('X vs Time(s) ')
+plt.ylabel('X')
 plt.xlabel('Time(s)')
 plt.show()
+
+
+" Separation of Functions "
+
+# Gamma
+plt.scatter(t, gamma)
+plt.xlim(0, 2e-12)
+plt.title('Gamma vs Time(s) ')
+plt.ylabel('Gamma')
+plt.xlabel('Time(s)')
+plt.show()
+
+# - n
+plt.scatter(t, - n)
+plt.xlim(0, 2e-12)
+plt.title('- n vs Time(s) ')
+plt.xlabel('Time(s)')
+plt.ylabel('n')
+plt.show()
+
+# np.absolute(np.exp(- 1j * omega_s * t) - 1) ** 2
+plt.scatter(t, (np.absolute(np.exp(- 1j * omega_s * t) - 1)) ** 2)
+plt.xlim(0, 2e-12)
+plt.title('np.absolute(np.exp(- 1j * omega_s * t) - 1) ** 2) (from X_T) vs Time(s) ')
+plt.xlabel('Time(s)')
+plt.ylabel('np.exp(- 1j * omega_s * t) - 1')
+plt.show()
+
+# np.absolute(np.exp(- 1j * omega_s * t) - 1) ** 2
+plt.scatter(t, (np.exp(- 1j * omega_s * t) - 1))
+plt.xlim(0, 2e-12)
+plt.title('np.exp(- 1j * np.outer(omega_s, t)) - 1) (from X_o) vs Time(s) ')
+plt.xlabel('Time(s)')
+plt.ylabel('np.exp(- 1j * omega_s * t) - 1')
+plt.show()
+
+# np.exp(- 1j * big_omega * t)
+plt.scatter(t, np.exp(- 1j * big_omega * t))
+plt.xlim(0, 2e-12)
+plt.title('np.exp(- 1j * big_omega * t (from X) vs Time(s) ')
+plt.xlabel('Time(s)')
+plt.ylabel('np.exp(- 1j * big_omega * t')
+plt.show()
+
+
 
