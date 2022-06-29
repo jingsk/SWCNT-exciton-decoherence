@@ -36,10 +36,10 @@ C = 1
 
 
 # wave vector
-q = np.linspace(0.001, 0.01, num=1500) * 1/L
+q = np.linspace(0.001, 0.01, num=100) * 1/L
 
 # time (s)
-t = np.linspace(0, 3, num=1500) * 1e-12
+t = np.linspace(0, 3, num=10000) * 1e-12
 # linear dispersion
 omega_s = v * q
 
@@ -59,11 +59,11 @@ w = v * q
 gamma = g / w
 
 # phonon occupation number
-n = (np.exp((h_bar * w)/(k_b * T)) - 1) ** -1
+n_s = (np.exp((h_bar * w)/(k_b * T)) - 1) ** -1
 
 
 # temperature_dependent
-temperature_dependent = 1j * np.exp(np.absolute(gamma) ** 2 * - n
+temperature_dependent = 1j * np.exp(np.absolute(gamma) ** 2 * - n_s
                                     @ (np.absolute(np.exp(- 1j * np.outer(omega_s, t)) - 1)) ** 2)
 
 plt.scatter(t, temperature_dependent.imag)
@@ -107,19 +107,19 @@ plt.show()
 " Separation of Functions "
 
 # Gamma
-plt.scatter(t, gamma)
+plt.scatter(q, gamma)
 plt.xlim(0, 2e-12)
 plt.title('Gamma vs Time(s) ')
 plt.ylabel('Gamma')
 plt.xlabel('Time(s)')
 plt.show()
 
-# - n
-plt.scatter(t, - n)
+# n_s
+plt.scatter(q, n_s)
 plt.xlim(0, 2e-12)
-plt.title('- n vs Time(s) ')
+plt.title('n_s vs Time(s) ')
 plt.xlabel('Time(s)')
-plt.ylabel('n')
+plt.ylabel('n_s')
 plt.show()
 
 # np.absolute(np.exp(- 1j * omega_s * t) - 1) ** 2
@@ -130,7 +130,7 @@ plt.xlabel('Time(s)')
 plt.ylabel('np.exp(- 1j * omega_s * t) - 1')
 plt.show()
 
-# np.absolute(np.exp(- 1j * omega_s * t) - 1) ** 2
+# np.exp(- 1j * omega_s * t) - 1
 plt.scatter(t, (np.exp(- 1j * omega_s * t) - 1))
 plt.xlim(0, 2e-12)
 plt.title('np.exp(- 1j * np.outer(omega_s, t)) - 1) (from X_o) vs Time(s) ')
@@ -139,12 +139,11 @@ plt.ylabel('np.exp(- 1j * omega_s * t) - 1')
 plt.show()
 
 # np.exp(- 1j * big_omega * t)
-plt.scatter(t, np.exp(- 1j * big_omega * t))
-plt.xlim(0, 2e-12)
+plt.plot(t, np.exp(- 1j * big_omega * t))
+plt.xlim(0, .25e-12)
 plt.title('np.exp(- 1j * big_omega * t (from X) vs Time(s) ')
 plt.xlabel('Time(s)')
 plt.ylabel('np.exp(- 1j * big_omega * t')
 plt.show()
-
 
 
