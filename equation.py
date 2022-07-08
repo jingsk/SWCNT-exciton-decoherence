@@ -15,7 +15,7 @@ k_b = 1.380649e-23
 # h bar (J-s)
 h_bar = 1.054571817e-34
 # temperature (K)
-T = 6
+T = 0.5
 # rho (kg/m)
 p = 1.67e-15
 # vs (m/s)
@@ -179,9 +179,9 @@ plt.show()
 # norm
 y3 = np.sqrt(np.exp(- 1j * big_omega * t) * np.conjugate(np.exp(- 1j * big_omega * t)))
 
-plt.plot(t, y1, label="y1")
-plt.plot(t, y2, label="y2")
-plt.plot(t, y3, label="y3")
+plt.plot(t, y1, label="Chi_T")
+plt.plot(t, y2, label="Chi_o")
+plt.plot(t, y3, label="e^-i*omega bar *t")
 plt.yscale('log')
 plt.title('Norms of np.exp(- 1j * big_omega * t, X_T, and X_o')
 plt.ylabel('Functions')
