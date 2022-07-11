@@ -15,7 +15,7 @@ k_b = 1.380649e-23
 # h bar (J-s)
 h_bar = 1.054571817e-34
 # temperature (K)
-T = 0.5
+T = 1
 # rho (kg/m)
 p = 1.67e-15
 # vs (m/s)
@@ -72,7 +72,7 @@ plt.xlim(0, 2e-12)
 plt.yscale('log')
 plt.title('X_T vs Time(s) (Imaginary)')
 plt.ylabel('X_T')
-plt.xlabel('Time(s)')
+plt.xlabel('Time(ps)')
 plt.show()
 
 # real part
@@ -81,7 +81,7 @@ plt.xlim(0, 2e-12)
 # plt.yscale('log')
 plt.title('X_T vs Time(s) (Real)')
 plt.ylabel('X_T')
-plt.xlabel('Time(s)')
+plt.xlabel('Time(ps)')
 plt.show()
 
 # norm
@@ -97,7 +97,7 @@ plt.xlim(0, 2e-12)
 plt.yscale('log')
 plt.title('X_o vs Time (s) (Imaginary)')
 plt.ylabel('X_o')
-plt.xlabel('Time(s)')
+plt.xlabel('Time(ps)')
 plt.show()
 
 # real
@@ -106,7 +106,7 @@ plt.xlim(0, 2e-12)
 plt.yscale('log')
 plt.title('X_o vs Time (s) (Real)')
 plt.ylabel('X_o')
-plt.xlabel('Time(s)')
+plt.xlabel('Time(ps)')
 plt.show()
 
 # norm
@@ -119,14 +119,14 @@ big_omega = omega_constant * h_bar - np.absolute(gamma) ** 2 @ omega_s
 linear_susceptibility = C * - 1j * np.exp(- 1j * big_omega * t) \
                         * temperature_independent * temperature_dependent
 
-plt.scatter(t, linear_susceptibility.imag)
+plt.scatter(t, np.abs(linear_susceptibility.imag))
 # limits according to the research paper
 plt.xlim(0, 2e-12)
 # logarithmic scale according to research paper
 plt.yscale('log')
-plt.title('X vs Time(s) ')
-plt.ylabel('X')
-plt.xlabel('Time(s)')
+plt.title('|X(t)| vs Time(s) ')
+plt.ylabel('|X(t)|')
+plt.xlabel('Time(ps)')
 plt.show()
 
 
