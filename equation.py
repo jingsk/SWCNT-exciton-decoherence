@@ -39,7 +39,7 @@ C = 1
 q = np.linspace(0.001, 0.01, num=1000) * 1/L
 
 # time (s)
-t = np.linspace(0, 3, num=10000) * 1e-12
+t = np.linspace(0, 3, num=1000) * 1e-12
 # linear dispersion
 omega_s = v * q
 
@@ -197,6 +197,15 @@ plt.plot(t, y4, label="X_T * X_o")
 plt.yscale('log')
 plt.title('|X_T||X_o| vs t')
 plt.ylabel('Norm')
+plt.xlabel('t')
+plt.legend()
+plt.show()
+
+# oscillation in the norm
+
+y5 = np.sin((omega_s * t)/2) ** 2
+plt.plot(q, y5, label="sin((omega_s*t)/2)^2")
+plt.title('sin((omega_s*t)/2)^2 vs t')
 plt.xlabel('t')
 plt.legend()
 plt.show()
