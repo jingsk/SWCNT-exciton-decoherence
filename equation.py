@@ -15,7 +15,7 @@ k_b = 1.380649e-23
 # h bar (J-s)
 h_bar = 1.054571817e-34
 # temperature (K)
-T = 1
+T = 6
 # rho (kg/m)
 p = 1.67e-15
 # vs (m/s)
@@ -124,7 +124,7 @@ plt.scatter(t, np.abs(linear_susceptibility.imag))
 plt.xlim(0, 2e-12)
 # logarithmic scale according to research paper
 plt.yscale('log')
-plt.title('|X(t)| vs Time(s) ')
+plt.title('|X(t)| vs Time(ps) ')
 plt.ylabel('|X(t)|')
 plt.xlabel('Time(ps)')
 plt.show()
@@ -179,12 +179,24 @@ plt.show()
 # norm
 y3 = np.sqrt(np.exp(- 1j * big_omega * t) * np.conjugate(np.exp(- 1j * big_omega * t)))
 
-plt.plot(t, y1, label="Chi_T")
-plt.plot(t, y2, label="Chi_o")
+# plot of y1, y2, and y3
+plt.plot(t, y1, label="X_T")
+plt.plot(t, y2, label="X_o")
 plt.plot(t, y3, label="e^-i*omega bar *t")
 plt.yscale('log')
 plt.title('Norms of np.exp(- 1j * big_omega * t, X_T, and X_o')
 plt.ylabel('Functions')
+plt.xlabel('t')
+plt.legend()
+plt.show()
+
+# norm of X_T * X_o
+
+y4 = y1 * y2
+plt.plot(t, y4, label="X_T * X_o")
+plt.yscale('log')
+plt.title('|X_T||X_o| vs t')
+plt.ylabel('Norm')
 plt.xlabel('t')
 plt.legend()
 plt.show()
