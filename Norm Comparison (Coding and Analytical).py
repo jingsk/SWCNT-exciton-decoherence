@@ -80,9 +80,6 @@ norm_Xo_XT = np.exp( - (np.absolute(gamma) ** 2 * (1 + 2 * n_s) @ (1 - np.cos(np
 norm_Xo = np.exp( - (np.absolute(gamma) ** 2 @ (1 - np.cos(np.outer(omega_s, t)))))
 
 # norm_XT
-norm_XT = np.exp( - (np.absolute(gamma) ** 2 @ (1 - np.cos(np.outer(omega_s, t)))))
-
-# norm_XT
 norm_XT = np.exp( - (np.absolute(gamma) ** 2 * n_s @ (2 - 2 * np.cos(np.outer(omega_s, t)))))
 
 plt.scatter(t, norm_Xo_XT, label = "norm_Xo_XT (Analytical)")
