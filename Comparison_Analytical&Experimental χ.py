@@ -4,11 +4,9 @@ import matplotlib.pyplot as plt
 
 warnings.filterwarnings('ignore')
 
+# In this file we are comparing |X| from analytical derivation and coding
 
 " CONSTANTS "
-
-
-# move constant to a different files
 
 # Boltzmann constant (J/K)
 k_b = 1.380649e-23
