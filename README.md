@@ -1,4 +1,4 @@
-# Boston_REU_2022
+# National Science Foundation Boston 2022 Boston University Physics Research Opportunity
 
 equation.py: Using the Brillouin Zone to convert sigma to an integral, we are able to graph |X(t)| vs Time (ps). This is the first graph. Additionally , the long term of the X(t) is derived form the Indepent Boson Model (IBM) and plotted. We use different chirality values to understand its effects on the decoherence behavior.
 
