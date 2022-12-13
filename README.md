@@ -1,6 +1,6 @@
 # NSF Boston 2022 Boston University Physics Research Opportunity
 
-I participated in the 2022 Boston University Physics Research Opportunity (BU-PRO) program under the supervision of Professor Sahar Sharifzadeh. Here, I developed a model for quantum coherence time between carbon nanotube excitons and acoustic phonons from "Non-Markovian decoherence of localized nanotube excitons by acoustic phonons". The highlight of this experience came at the summer’s end when my graduate student mentor and I derived a novel relationship between the chirality of the carbon nanotube and coherence time. 
+I participated in the 2022 Boston University Physics Research Opportunity (BU-PRO) program under the supervision of Professor Sahar Sharifzadeh. Here, I developed a model for quantum coherence time between carbon nanotube excitons and acoustic phonons from "Non-Markovian decoherence of localized nanotube excitons by acoustic phonons" (link below). The highlight of this experience came at the summer’s end when my graduate student mentor and I derived a novel relationship between the chirality of the carbon nanotube and coherence time. 
 
 Research paper link: https://arxiv.org/abs/0802.2046
 
