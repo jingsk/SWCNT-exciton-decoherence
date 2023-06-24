@@ -45,14 +45,14 @@ if __name__ == "__main__":
     n,m = 6,4
     swcnt = SWCNT(n,m)
     L = swcnt.L
-    sigma = swcnt.L
+    sigma = swcnt.sigma
     rho = swcnt.rho
     v_s = swcnt.v_s
     D_s = swcnt.D_s
     #time to evaluate Chi
     t_array = np.linspace(0, 3, num=100) * 1e-12 #s
     #simulation temperature in K
-    T = 4 #K
+    T = 6 #K
     norms = [norm(X_integrand),norm(XT_integrand), norm(X0_integrand)]
 
     t_array2=t_array*1e12
