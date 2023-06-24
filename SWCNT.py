@@ -38,7 +38,7 @@ class SWCNT:
         SWCNT.apply_r_cutoff(origin=[0,0,0], r=40)
         SWCNT.bath_geometry
     """
-    def __init__(SWCNT, n: int, m: int):
+    def __init__(self, n: int, m: int):
         """
         Structural properties of (n,m) SWCNT.
 
@@ -110,9 +110,9 @@ class SWCNT:
         return np.gcd(2*m + n, 2*n + m)  #unitless
     
         #provided user input set exciton confinement
-    def set_sigma(self,sigma)
+    def set_sigma(self,sigma):
         self.sigma=sigma
 
     #provided user input set first excited state
-    def set_omega(self,omega)
+    def set_omega(self,omega):
         self.omega=omega
