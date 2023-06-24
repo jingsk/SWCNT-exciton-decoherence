@@ -4,11 +4,9 @@ This work is done by Diego Barrutia and Jing Trerayapiwat. Diego participated in
 
 Research paper link: https://arxiv.org/abs/0802.2046
 
-equation.py: Using the Brillouin Zone and Riemann Sum to convert sigma to an integral, we are able to graph |X(t)| vs Time (ps). This is the first graph. Additionally , the long term of the X(t) is derived form the Indepent Boson Model (IBM) and plotted. We use different chirality values to understand its effects on the decoherence behavior.
+SWCNT class is written calculate intrinsic physical properties of SWCNT. run_X is the main program which plots exciton decoherence vs time.
 
-Chirality: Using the magnitude of unit vector and unit cell length, we are able to calculate for chirality. This chirality is later applied in equation.py.
-
-Norm Comparison (Coding and Analytical).py: To double check out work, we derive the norm analytically and compared it with the code. As we can see in the model produced, both graph fit confirming the reliability of the code. 
+TODO: link SWCNT to a database and obtain SWCNT exciton confinement length
 
 # Theoretical Background
 
@@ -33,6 +31,21 @@ $$|\chi_0| = \prod_{q}e^{-|\gamma|^2(1-cos(wt))} = \frac{L}{\pi} \int_{q=0}^{BZ}
 $$|\chi_{T}| = \prod_{q}e^{-2n|\gamma|^2(1-cos(wt))} = \frac{L}{\pi} \int_{q=0}^{BZ}e^{-2n|\gamma|^2(1-cos(wt))}$$,
 $$|\chi| = |\chi_{0}\chi_{T}| = \prod_{q}e^{-|\gamma|^2(1-cos(wt)(1+2n))} = \frac{L}{\pi} \int_{q=0}^{BZ}e^{-|\gamma|^2(1-cos(wt)(1+2n))}$$,
 where $\frac{\pi}{L}$, defines the edge of the Brillouin Zone.  The above equations can be easily implemented using Scipy and Numpy.
+
+The linear mass density increases with larger SWCNT diameter. The linear mass density of a (n,m) SWCNT chirality can be calculated from (Dresselhaus, G., Dresselhaus, M. S., & Saito, R. (1998). Physical Properties of Carbon Nanotubes (1st ed.). Imperial College Press.):
+\begin{equation}
+    \rho = m_C\frac{ N_{atoms/cell}}{L},
+\end{equation}
+ \begin{equation}
+    N_{atoms/cell} = \frac{4(n^2+nm+m^2)}{d_R},
+ \end{equation}
+\begin{equation}
+    L = \frac{3a}{d_R} \sqrt{n^2+nm+m^2},
+\end{equation}
+\begin{equation}
+    d_R = gcd(2m+n,2n+m),
+\end{equation}
+with a = C-C aromatic bond length, 1.55 \AA{}, $m_C$ the mass of a carbon atom. The dependence of $\rho$ on (n,m) means it is possible to tune $T_2$ as a function of chirality.
 
 
 
