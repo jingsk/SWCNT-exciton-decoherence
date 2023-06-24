@@ -93,7 +93,7 @@ def get_n_atoms_per_cell(n: int, m: int):
             m:
                 longtitudinal folds. m introduces chirality to zigzag SWCNTs.
     """
-    return 4* np.sqrt(n**2 + n*m + m**2) / get_dr(n,m) #Kg/cell
+    return 4* (n**2 + n*m + m**2) / get_dr(n,m) #Kg/cell
 
     
 def get_dr(n: int, m: int):
