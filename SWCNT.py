@@ -2,7 +2,7 @@ import numpy as np
 
 " CONSTANTS "
 # carbon-carbon bond length in aromatic systems 
-a = np.sqrt(3) * 1.44e-10  # m
+a = 1.55e-10  # m
 # mass of carbon atom
 mass_C = 1.99e-26  # kg
 h_bar = 1.054571817e-34 # Js
@@ -54,7 +54,7 @@ class SWCNT:
         #for unit cell length of SWCNT
         self.L = get_unit_cell_length(self.n, self.m) #m
         #get linear mass density
-        self.rho= get_n_atoms_per_cell(self.n,self.m) / self.L #Kg/m
+        self.rho= mass_C * get_n_atoms_per_cell(self.n,self.m) / self.L #Kg/m
         #TODO: hook up to a database and make E11 and exciton localization class properties 
         # confinement length (m)
         self.sigma = 3e-9 #m #exciton
