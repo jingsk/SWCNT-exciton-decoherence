@@ -68,51 +68,51 @@ class SWCNT:
         self.D_s = 2.243047191e-18 # J
 
 
-    def get_unit_cell_length(n: int, m: int):
-        """
-        for present (n,m) use a formula to give unit cell length
-        
-        Parameters
-        ----------
-                n:
-                    circumferntial folds. Pure (n,0) yields zigzag SWCNT.
-                m:
-                    longtitudinal folds. m introduces chirality to zigzag SWCNTs.
-        """
-        return 3 * a / (get_dr(n,m)) * np.sqrt(n**2 + n*m + m**2) #m
-
-
-    def get_n_atoms_per_cell(n: int, m: int):
-        """
-        for present (n,m) use a formula to give number of atoms per cell
-        
-        Parameters
-        ----------
-                n:
-                    circumferntial folds. Pure (n,0) yields zigzag SWCNT.
-                m:
-                    longtitudinal folds. m introduces chirality to zigzag SWCNTs.
-        """
-        return 4* np.sqrt(n**2 + n*m + m**2) / get_dr(n,m) #Kg/cell
-
-        
-    def get_dr(n: int, m: int):
-        """
-        for L, rho calculations. d_r defines redundancy along SWCNT vector
-        
-        Parameters
-        ----------
-                n:
-                    circumferntial folds. Pure (n,0) yields zigzag SWCNT.
-                m:
-                    longtitudinal folds. m introduces chirality to zigzag SWCNTs.
-        """
-        return np.gcd(2*m + n, 2*n + m)  #unitless
+def get_unit_cell_length(n: int, m: int):
+    """
+    for present (n,m) use a formula to give unit cell length
     
-        #provided user input set exciton confinement
-    def set_sigma(self,sigma):
-        self.sigma=sigma
+    Parameters
+    ----------
+            n:
+                circumferntial folds. Pure (n,0) yields zigzag SWCNT.
+            m:
+                longtitudinal folds. m introduces chirality to zigzag SWCNTs.
+    """
+    return 3 * a / (get_dr(n,m)) * np.sqrt(n**2 + n*m + m**2) #m
 
-    #provided user input set first excited state
-    def set_omega(self,omega):
-        self.omega=omega
+
+def get_n_atoms_per_cell(n: int, m: int):
+    """
+    for present (n,m) use a formula to give number of atoms per cell
+    
+    Parameters
+    ----------
+            n:
+                circumferntial folds. Pure (n,0) yields zigzag SWCNT.
+            m:
+                longtitudinal folds. m introduces chirality to zigzag SWCNTs.
+    """
+    return 4* np.sqrt(n**2 + n*m + m**2) / get_dr(n,m) #Kg/cell
+
+    
+def get_dr(n: int, m: int):
+    """
+    for L, rho calculations. d_r defines redundancy along SWCNT vector
+    
+    Parameters
+    ----------
+            n:
+                circumferntial folds. Pure (n,0) yields zigzag SWCNT.
+            m:
+                longtitudinal folds. m introduces chirality to zigzag SWCNTs.
+    """
+    return np.gcd(2*m + n, 2*n + m)  #unitless
+
+    #provided user input set exciton confinement
+def set_sigma(self,sigma):
+    self.sigma=sigma
+
+#provided user input set first excited state
+def set_omega(self,omega):
+    self.omega=omega

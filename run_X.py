@@ -17,10 +17,10 @@ t_array = np.linspace(0, 3, num=100) * 1e-12 #s
 
 
 #unitless vibrational coupling
-def gamma(q,swcnt):
-    G = swcnt.D_s * q / np.sqrt(2 * rho * L * h_bar * v_s * q)
+def gamma(q):
+    G = D_s * q / np.sqrt(2 * rho * L * h_bar * v_s * q)
     F = np.exp(-(q ** 2 * sigma ** 2)/4)
-    w = swcnt.v_s * q
+    w = v_s * q
     return (G * F / w)
 #phonon occupation number
 def n(q):
