@@ -33,18 +33,10 @@ $$|\chi| = |\chi_{0}\chi_{T}| = \prod_{q}e^{-|\gamma|^2(1-cos(wt)(1+2n))} = \fra
 where $\frac{\pi}{L}$, defines the edge of the Brillouin Zone.  The above equations can be easily implemented using Scipy and Numpy.
 
 The linear mass density increases with larger SWCNT diameter. The linear mass density of a (n,m) SWCNT chirality can be calculated from (Dresselhaus, G., Dresselhaus, M. S., & Saito, R. (1998). Physical Properties of Carbon Nanotubes (1st ed.). Imperial College Press.):
-\begin{equation}
-    \rho = m_C\frac{ N_{atoms/cell}}{L},
-\end{equation}
- \begin{equation}
-    N_{atoms/cell} = \frac{4(n^2+nm+m^2)}{d_R},
- \end{equation}
-\begin{equation}
-    L = \frac{3a}{d_R} \sqrt{n^2+nm+m^2},
-\end{equation}
-\begin{equation}
-    d_R = gcd(2m+n,2n+m),
-\end{equation}
+$$\rho = m_C\frac{ N_{atoms/cell}}{L}$$,
+$$N_{atoms/cell} = \frac{4(n^2+nm+m^2)}{d_R}$$,
+$$L = \frac{3a}{d_R} \sqrt{n^2+nm+m^2},
+$$d_R = gcd(2m+n,2n+m)$$,
 with a = C-C aromatic bond length, 1.55 \AA{}, $m_C$ the mass of a carbon atom. The dependence of $\rho$ on (n,m) means it is possible to tune $T_2$ as a function of chirality.
 
 
