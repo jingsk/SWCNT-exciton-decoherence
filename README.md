@@ -1,4 +1,4 @@
-# SWCNT exciton $T_2$ calculation
+# SWCNT exciton T2 calculation
 
 This repo was first developed by Diego Barrutia and now maintained by Jing Trerayapiwat. Diego participated in the 2022 Boston University Physics Research Opportunity (BU-PRO) program under the supervision of Jing and professor Sahar Sharifzadeh. Here, we implemented a model to calculate quantum decoherence of an exciton in single-walled carbon nanotube as a result of scattering with lateral acoustic phonons. For more details about the model see: Galland, C., Högele, A., Türeci, H. E., & Imamoglu, A. (2008). Non-Markovian decoherence of localized nanotube excitons by acoustic phonons. Physical Review Letters, 101(6), 1–4. https://doi.org/10.1103/PhysRevLett.101.067402 
 
