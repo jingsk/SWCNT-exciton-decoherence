@@ -1,4 +1,4 @@
-# SWCNT exciton T2 calculation
+# SWCNT exciton $T_2$ calculation
 
 This repo was first developed by Diego Barrutia and now maintained by Jing Trerayapiwat. Diego participated in the 2022 Boston University Physics Research Opportunity (BU-PRO) program under the supervision of Jing and professor Sahar Sharifzadeh. Here, we implemented a model to calculate quantum decoherence of an exciton in single-walled carbon nanotube as a result of scattering with lateral acoustic phonons. For more details about the model see: Galland, C., Högele, A., Türeci, H. E., & Imamoglu, A. (2008). Non-Markovian decoherence of localized nanotube excitons by acoustic phonons. Physical Review Letters, 101(6), 1–4. https://doi.org/10.1103/PhysRevLett.101.067402 
 
@@ -14,7 +14,7 @@ $$\chi(t)  = -ie^{-i\bar{\Omega}t}\chi_{T}(t)\chi_{0}(t)$$,
 
 $$\chi_{T}(t)  \propto i\mathrm{exp}(\sum_{q}|\gamma(q)|^{2}[-n(q)|e^{-i\omega(q)t}-1|^{2}])$$,    
 $$\chi_{0}(t)  \propto i\mathrm{exp}(\sum_{q}|\gamma(q)|^{2}[e^{-i\omega(q)t}-1])$$,
-$\gamma$(q) = g/$\omega$, and $n(q)=(e^{\frac{h\omega(q)}{k_BT}}-1)^{-1}$ is the phonon occupation number. The polaron-shifted transition energy, $\bar{\Omega}$ is approximated as the bare energy of the excited state without phonon corrections. We describes the exciton-phonon matrix elements as a result of coupling, $g(q)$, along the repeating $z$ direction of SWCNT as a product of $G(q)$, the deformation coupling, and $F(q)$, the form factor, ie.  $g=G(q)F(q)$, with
+$\gamma(q) = g\omega$, and $n(q)=(e^{\frac{h\omega(q)}{k_BT}}-1)^{-1}$ is the phonon occupation number. The polaron-shifted transition energy, $\bar{\Omega}$ is approximated as the bare energy of the excited state without phonon corrections. We describes the exciton-phonon matrix elements as a result of coupling, $g(q)$, along the repeating $z$ direction of SWCNT as a product of $G(q)$, the deformation coupling, and $F(q)$, the form factor, ie.  $g=G(q)F(q)$, with
 
 $$F(q) = \int dz|\Psi^{exc}(z)|^2e^{iqz}$$,
 $$G(q) = \frac{D_sq}{\sqrt{2\rho L \hbar \omega(q)}}$$,
@@ -33,9 +33,9 @@ where $\frac{\pi}{L}$, defines the edge of the Brillouin Zone.  The above equati
 The linear mass density increases with larger SWCNT diameter. The linear mass density of a (n,m) SWCNT chirality can be calculated from (Dresselhaus, G., Dresselhaus, M. S., & Saito, R. (1998). Physical Properties of Carbon Nanotubes (1st ed.). Imperial College Press.):
 $$\rho = m_C\frac{ N_{atoms/cell}}{L}$$,
 $$N_{atoms/cell} = \frac{4(n^2+nm+m^2)}{d_R}$$,
-$$L = \frac{3a}{d_R} \sqrt{n^2+nm+m^2},
+$$L = \frac{3a}{d_R} \sqrt{n^2+nm+m^2},$$
 $$d_R = gcd(2m+n,2n+m)$$,
-with a = C-C aromatic bond length, 1.55 \AA{}, $m_C$ the mass of a carbon atom. The dependence of $\rho$ on (n,m) means it is possible to tune $T_2$ as a function of chirality.
+with a = C-C aromatic bond length, 1.55 $\unicode{xC5}$, $m_C$ the mass of a carbon atom. The dependence of $\rho$ on (n,m) means it is possible to tune $T_2$ as a function of chirality.
 
 
 
